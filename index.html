@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SpotDeck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0D11; --bg2:#0A0A0E;
+    --panel:#15151C; --panel2:#1C1C25; --panel-hi:#24242F;
+    --border:rgba(255,255,255,0.07);
+    --green:#2CD05B; --green-d:#1FA847; --green-hi:#5BE883;
+    --coin:#F5A623; --coin-hi:#FBC65E; --coin-d:#B9770C;
+    --text:#F3F3F6; --dim:#8B8B98; --dim2:#585863;
+    --purple1:#7B3FE4; --purple2:#3a1d6e;
+    --r-commune:#9AA0A6; --r-peu_commun:#2CD05B; --r-rare:#3B82F6;
+    --r-epique:#A855F7; --r-legendaire:#F5A623; --r-mythique:#EF4444;
+    --safe-b:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;height:100%;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.nun{font-family:'Nunito',sans-serif;}
+  button{font-family:inherit;cursor:pointer;color:inherit;}
+  .app{max-width:460px;margin:0 auto;min-height:100%;position:relative;padding-bottom:calc(84px + var(--safe-b));}
+  ::-webkit-scrollbar{display:none;}
+
+  /* ---------- Top bar ---------- */
+  .top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;padding:14px 16px calc(10px + env(safe-area-inset-top,0px));background:var(--bg);}
+  .top .logo{height:38px;flex-shrink:0;}
+  .top .logo img{height:38px;width:auto;display:block;}
+  .free-btn{display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,#e0a02a,#c07d10);border:none;border-radius:10px;padding:8px 10px 8px 12px;font-family:'Nunito';font-weight:900;color:#3a2405;}
+  .free-btn .lbl{font-size:12px;letter-spacing:0.03em;}
+  .free-btn .qm{width:26px;height:26px;border-radius:6px;background:#3a2405;color:var(--coin-hi);display:flex;align-items:center;justify-content:center;font-weight:900;transform:rotate(6deg);}
+  .top .spacer{flex:1;}
+  .spotz-pill{display:flex;align-items:center;gap:6px;background:var(--panel2);border:1px solid var(--border);border-radius:20px;padding:7px 13px 7px 8px;font-family:'Nunito';font-weight:900;font-size:15px;}
+  .coin{width:18px;height:18px;flex-shrink:0;}
+
+  /* ---------- Category chips ---------- */
+  .chips{display:flex;gap:9px;padding:6px 16px 14px;overflow-x:auto;}
+  .chip{width:44px;height:44px;border-radius:50%;flex-shrink:0;background:var(--panel);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--dim2);position:relative;}
+  .chip svg{width:20px;height:20px;}
+  .chip.active{background:transparent;border:2.5px solid var(--green);color:var(--green);box-shadow:0 0 12px rgba(44,208,91,0.35);}
+  .chip.active svg{color:var(--green);}
+
+  /* ---------- Tools row ---------- */
+  .tools{display:flex;gap:10px;padding:0 16px 16px;}
+  .tool-ico{width:52px;height:50px;border-radius:12px;background:var(--panel);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--dim);flex-shrink:0;}
+  .tool-ico svg{width:20px;height:20px;}
+  .search{flex:1;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:0 14px;}
+  .search svg{width:18px;height:18px;color:var(--dim2);}
+  .search input{background:none;border:none;color:var(--text);font-family:inherit;font-size:15px;outline:none;width:100%;}
+  .search input::placeholder{color:var(--dim2);}
+
+  .page-h{padding:2px 16px 14px;}
+  .page-h h1{font-family:'Nunito';font-weight:900;font-size:34px;letter-spacing:0.01em;line-height:0.95;margin:0;}
+  .page-h .sub{color:var(--dim);font-weight:600;margin-top:6px;font-size:13px;}
+
+  /* ---------- Pack card ---------- */
+  .pack-list{padding:0 16px;display:flex;flex-direction:column;gap:16px;}
+  .pack-card{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:20px 16px 16px;text-align:center;position:relative;}
+  .pack-badge{position:absolute;top:12px;right:12px;background:linear-gradient(180deg,var(--coin-hi),var(--coin-d));color:#2a1a05;font-family:'Nunito';font-weight:900;font-size:12px;padding:5px 10px;border-radius:8px;z-index:5;letter-spacing:.02em;}
+  .price-free{font-family:'Nunito';font-weight:900;color:#2CD05B;letter-spacing:.03em;}
+  .pack-card .cf{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:0.14em;font-weight:800;}
+  .pack-card .setname{font-family:'Nunito';font-weight:900;font-size:24px;margin:2px 0 20px;line-height:1;}
+  .pack-visual{position:relative;width:100%;aspect-ratio:1/1;max-height:500px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden;}
+  .pack-foot{display:flex;align-items:center;justify-content:space-between;padding:0 4px;}
+  .price{display:flex;align-items:center;gap:8px;font-family:'Nunito';font-weight:900;font-size:22px;}
+  .view-link{display:flex;align-items:center;gap:4px;color:var(--dim);font-weight:700;font-size:16px;}
+  .view-link svg{width:16px;height:16px;}
+
+  /* pouch (image PNG) */
+  .pouch{position:relative;width:100%;height:100%;z-index:2;filter:drop-shadow(0 20px 34px rgba(0,0,0,0.5));display:flex;align-items:center;justify-content:center;}
+  .pouch .pack-img{width:100%;height:100%;object-fit:cover;display:block;}
+  .pouch .cnt{position:absolute;top:6%;right:6%;background:#0a0a0d;color:#fff;font-family:'Nunito';font-weight:900;font-size:16px;padding:6px 11px;border-radius:8px;line-height:1;text-align:center;z-index:3;}
+  .pouch .cnt small{font-size:9px;}
+  .pouch .cnt small{display:block;font-size:7px;font-weight:800;opacity:0.7;letter-spacing:0.05em;}
+  .pouch .plabel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);text-align:center;width:56%;z-index:3;}
+  .pouch .brand{font-family:'Nunito';font-weight:900;font-size:13px;color:#F5C542;display:flex;align-items:center;justify-content:center;gap:4px;text-shadow:0 1px 3px rgba(0,0,0,.7);}
+  .pouch .from{font-size:7px;letter-spacing:0.16em;text-transform:uppercase;color:#fff;opacity:0.85;margin:6px 0 3px;text-shadow:0 1px 2px rgba(0,0,0,.7);}
+  .pouch .ptitle{font-family:'Nunito';font-weight:900;font-size:19px;line-height:0.92;text-transform:uppercase;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.8);}
+  .fan{position:absolute;top:12%;height:74%;width:44%;border-radius:9px;background:#22242e;border:1px solid rgba(255,255,255,0.09);}
+  .fan.f1{transform:rotate(9deg) translateX(18%);z-index:1;}
+  .fan.f2{transform:rotate(16deg) translateX(30%);z-index:0;opacity:0.55;}
+
+  /* ---------- Card vector ---------- */
+  .tcard{border-radius:11px;overflow:hidden;}
+  .tcard .frame{border:2.5px solid var(--border);border-radius:11px;overflow:hidden;position:relative;aspect-ratio:63/88;display:flex;flex-direction:column;}
+  .tcard .cname{font-family:'Nunito';font-weight:900;font-size:10px;padding:6px 7px 5px;background:rgba(0,0,0,0.4);line-height:1.05;position:relative;z-index:2;}
+  .tcard .cart{flex:1;display:flex;align-items:center;justify-content:center;position:relative;}
+  .tcard .cart .mono{position:absolute;font-family:'Nunito';font-weight:900;font-size:52px;color:rgba(255,255,255,0.13);}
+  .tcard .cart svg{width:46%;height:46%;position:relative;z-index:1;}
+  .tcard .cstats{display:grid;grid-template-columns:1fr 1fr;gap:2px 6px;padding:5px 7px 3px;background:rgba(0,0,0,0.55);font-family:'Nunito';font-weight:900;font-size:9px;position:relative;z-index:2;}
+  .tcard .cstats span{display:flex;align-items:center;gap:3px;color:#fff;}
+  .tcard .cstats img{width:11px;height:11px;object-fit:contain;}
+  .tcard .cfoot{display:flex;align-items:center;justify-content:space-between;padding:5px 7px;background:rgba(0,0,0,0.45);font-size:9px;position:relative;z-index:2;}
+  .tcard .rr{text-transform:uppercase;letter-spacing:0.04em;font-weight:800;}
+  .tcard .cval{display:flex;align-items:center;gap:3px;font-family:'Nunito';font-weight:900;font-size:10px;}
+  .tcard .cval svg{width:10px;height:10px;}
+
+  /* ---------- Grid collection ---------- */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;padding:0 16px;}
+  .cell{cursor:pointer;}
+  .locked{aspect-ratio:63/88;border-radius:11px;background:var(--panel);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;}
+  .locked svg{width:26px;height:26px;opacity:0.3;}
+
+  /* ---------- Market ---------- */
+  .m-bar{display:flex;align-items:center;gap:10px;padding:0 16px 14px;}
+  .m-drop{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:11px 14px;font-family:'Nunito';font-weight:800;font-size:15px;}
+  .m-drop svg{width:16px;height:16px;}
+  .m-cart{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:11px 14px;font-weight:700;color:var(--dim);}
+  .m-cart svg{width:17px;height:17px;}
+  .m-list{padding:0 16px;display:flex;flex-direction:column;gap:14px;}
+  .m-item{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:18px 16px;text-align:center;}
+  .m-thumb{display:flex;justify-content:center;margin-bottom:14px;}
+  .m-thumb .tcard{width:150px;}
+  .m-name{font-family:'Nunito';font-weight:900;font-size:19px;margin-bottom:4px;}
+  .m-sub{color:var(--dim);font-size:14px;margin-bottom:12px;}
+  .m-price{display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Nunito';font-weight:900;font-size:24px;margin-bottom:14px;}
+  .m-actions{display:flex;gap:10px;}
+  .m-mag{width:56px;flex-shrink:0;background:var(--panel2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--dim);}
+  .m-mag svg{width:20px;height:20px;}
+  .m-add{flex:1;background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:15px;font-family:'Nunito';font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;gap:9px;}
+  .m-add svg{width:18px;height:18px;}
+  .m-add:hover{background:var(--green);color:#06210f;border-color:var(--green);}
+  .m-add:disabled{opacity:0.4;}
+
+  /* ---------- Shop ---------- */
+  .shop-hero{text-align:center;padding:6px 16px 20px;}
+  .shop-hero .big{font-family:'Nunito';font-weight:900;font-size:40px;display:flex;align-items:center;justify-content:center;gap:12px;}
+  .shop-hero .big .coin{width:34px;height:34px;}
+  .shop-hero .lbl{color:var(--dim);text-transform:uppercase;letter-spacing:0.1em;font-size:13px;font-weight:700;margin-top:2px;}
+  .sp-list{padding:0 16px;display:flex;flex-direction:column;gap:14px;}
+  .sp-item{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:16px;}
+  .sp-item.best{border-color:var(--coin);box-shadow:0 0 24px rgba(245,166,35,0.14);}
+  .sp-stack{width:64px;height:64px;flex-shrink:0;}
+  .sp-stack img{width:100%;height:100%;object-fit:contain;display:block;}
+  .sp-info{flex:1;}
+  .sp-amt{font-family:'Nunito';font-weight:900;font-size:22px;}
+  .sp-bonus{color:var(--green-hi);font-size:13px;font-weight:700;margin-top:1px;}
+  .sp-buy{background:var(--green);border:none;color:#06210f;border-radius:12px;padding:13px 20px;font-family:'Nunito';font-weight:900;font-size:17px;}
+  .sp-note{color:var(--dim2);font-size:12px;text-align:center;padding:18px 24px;line-height:1.6;}
+
+  /* ---------- Open (purple) ---------- */
+  #v-open{position:fixed;inset:0;z-index:50;background:var(--bg);display:none;flex-direction:column;overflow-y:auto;max-width:460px;margin:0 auto;}
+  #v-open.show{display:flex;}
+  .open-hero{background:radial-gradient(ellipse at 50% 34%,var(--purple1),var(--purple2) 78%);padding:calc(20px + env(safe-area-inset-top,0px)) 20px 26px;text-align:center;position:relative;}
+  .open-back{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;display:flex;align-items:center;justify-content:center;}
+  .open-back svg{width:20px;height:20px;}
+  .open-lbl{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.7;margin-top:6px;}
+  .open-title{font-family:'Nunito';font-weight:900;font-size:30px;text-transform:uppercase;margin:2px 0 16px;}
+  .open-pouch{transform:scale(1.05);margin:6px 0 20px;display:flex;justify-content:center;}
+  .qty{display:inline-flex;align-items:center;background:rgba(255,255,255,0.15);border-radius:24px;overflow:hidden;margin-bottom:16px;}
+  .qty button{background:none;border:none;color:#fff;width:44px;height:44px;font-size:22px;}
+  .qty span{min-width:44px;text-align:center;font-weight:900;font-family:'Nunito';font-size:18px;}
+  .open-actions{display:flex;gap:10px;justify-content:center;}
+  .btn-green{background:var(--green);border:none;color:#06210f;border-radius:14px;padding:15px 22px;font-family:'Nunito';font-weight:900;font-size:16px;}
+  .btn-green:hover{background:var(--green-hi);}
+  .btn-demo{background:rgba(255,255,255,0.15);border:none;color:#fff;border-radius:14px;padding:15px 20px;font-family:'Nunito';font-weight:900;font-size:16px;display:flex;align-items:center;gap:8px;}
+  .btn-demo svg{width:18px;height:18px;}
+  .set-sec{padding:20px 16px 40px;}
+  .set-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+  .set-head .st{font-family:'Nunito';font-weight:900;font-size:18px;}
+  .set-head .meta{font-size:12px;color:var(--dim);}
+  .set-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+
+  /* ---------- Reveal ---------- */
+  #reveal{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 42%,var(--purple1),#180a30 80%);}
+  #reveal.show{display:flex;}
+  #reveal.r-legendaire{background:radial-gradient(ellipse at 50% 42%,#8a6410,#180a30 80%);}
+  #reveal.r-mythique{background:radial-gradient(ellipse at 50% 42%,#8a1f1f,#180a30 80%);}
+  .rv-top{position:absolute;top:calc(40px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;padding:0 20px;transition:opacity .3s;}
+  .rv-top.hide{opacity:0;pointer-events:none;}
+  .rv-hint{position:absolute;top:calc(48px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font-family:'Nunito';font-weight:900;font-size:17px;transition:opacity .3s;}
+  .rv-hint.hide{opacity:0;}
+  .rv-name{font-family:'Nunito';font-weight:900;font-size:26px;text-transform:uppercase;line-height:1.05;}
+  .rv-worth{display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:rgba(255,255,255,0.15);border-radius:22px;padding:7px 15px;font-weight:700;font-size:14px;}
+  .rv-card{width:280px;max-width:78vw;aspect-ratio:63/88;perspective:1200px;cursor:pointer;filter:drop-shadow(0 22px 44px rgba(0,0,0,0.55));animation:rin .45s cubic-bezier(.2,.7,.3,1);}
+  .rv-flip{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.8,.3,1);transform:rotate(-2deg);}
+  .rv-flip.flipped{transform:rotate(-2deg) rotateY(180deg);}
+  .rv-face,.rv-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;}
+  .rv-face{transform:rotateY(180deg);}
+  .rv-face .card{width:100%;height:100%;}
+  .rv-back{transform:rotateY(0deg);background:#0c0c0e;}
+  .rv-back img{width:100%;height:100%;object-fit:cover;display:block;}
+  @keyframes rin{from{opacity:0;transform:translateY(34px) scale(.88) rotate(-3deg);}to{opacity:1;transform:translateY(0) scale(1) rotate(-2deg);}}
+  .rv-count{position:absolute;bottom:calc(110px + var(--safe-b));left:0;right:0;text-align:center;}
+  .rv-count .b{background:rgba(255,255,255,0.15);border-radius:22px;padding:7px 18px;font-family:'Nunito';font-weight:900;font-size:15px;}
+  .rv-next{position:absolute;bottom:calc(44px + var(--safe-b));left:50%;transform:translateX(-50%);padding:16px 40px;}
+  .rv-corner{position:absolute;bottom:calc(46px + var(--safe-b));width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;display:flex;align-items:center;justify-content:center;}
+  .rv-corner svg{width:22px;height:22px;}
+  .rv-l{left:24px;} .rv-r{right:24px;}
+
+  /* ---------- Bottom nav ---------- */
+  .botnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;z-index:40;display:flex;background:var(--bg2);border-top:1px solid var(--border);padding:10px 8px calc(10px + var(--safe-b));}
+  .bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:none;color:var(--dim2);font-weight:700;font-size:12px;position:relative;padding:4px 0;}
+  .bn svg{width:24px;height:24px;}
+  .bn.active{color:var(--text);}
+  .bn.active::after{content:'';position:absolute;bottom:-10px;width:26px;height:3px;border-radius:3px;background:var(--green);}
+
+  .toast{position:fixed;bottom:calc(100px + var(--safe-b));left:50%;transform:translateX(-50%) translateY(80px);background:var(--panel-hi);border:1px solid var(--border);border-radius:14px;padding:13px 22px;font-weight:800;font-family:'Nunito';z-index:70;transition:transform .3s;box-shadow:0 14px 34px rgba(0,0,0,.55);max-width:90vw;text-align:center;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
+  /* loader */
+  #loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .45s ease;}
+  #loader.hide{opacity:0;pointer-events:none;}
+  #loader img{width:150px;height:auto;animation:pulseLogo 1.6s ease-in-out infinite;}
+  @keyframes pulseLogo{0%,100%{transform:scale(1);opacity:0.9;}50%{transform:scale(1.06);opacity:1;}}
+  /* free energy */
+  .fe-card{margin:0 16px 16px;background:linear-gradient(160deg,#2a2118,#17120c);border:1px solid var(--coin-d);border-radius:16px;padding:16px;}
+  .fe-top{display:flex;align-items:center;gap:12px;}
+  .fe-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(160deg,#e0a02a,#c07d10);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .fe-icon svg{width:24px;height:24px;}
+  .fe-info{flex:1;}
+  .fe-title{font-family:'Nunito';font-weight:900;font-size:16px;}
+  .fe-sub{font-size:12px;color:var(--dim);margin-top:1px;}
+  .fe-open{background:linear-gradient(180deg,var(--coin-hi),var(--coin-d));border:none;color:#2a1a05;border-radius:10px;padding:11px 16px;font-family:'Nunito';font-weight:900;font-size:14px;white-space:nowrap;}
+  .fe-open:disabled{background:var(--panel-hi);color:var(--dim2);}
+  .fe-slots{display:flex;gap:7px;justify-content:center;margin-top:14px;}
+  .fe-slot{width:26px;height:34px;border-radius:6px;border:1.5px dashed rgba(245,166,35,0.3);display:flex;align-items:center;justify-content:center;}
+  .fe-slot.on{border:1.5px solid var(--coin);background:linear-gradient(160deg,#3a2e1f,#221a10);}
+  .fe-slot svg{width:13px;height:13px;opacity:0.3;}
+  .fe-slot.on svg{opacity:1;}
+  .loadbar{width:180px;height:5px;border-radius:3px;background:var(--panel2);overflow:hidden;}
+  .loadbar span{display:block;height:100%;width:40%;border-radius:3px;background:linear-gradient(90deg,var(--green-d),var(--green-hi));animation:slide 1s ease-in-out infinite;}
+  @keyframes slide{0%{transform:translateX(-100%);}100%{transform:translateX(350%);}}
+  .hidden{display:none!important;}
+</style>
+</head>
+<body>
+<div id="loader">
+  <img src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SD_Logo1.png" alt="SpotDeck">
+  <div class="loadbar"><span></span></div>
+</div>
+<div class="app">
+
+  <!-- TOP -->
+  <div class="top">
+    <div class="logo"><img src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SD_Logo1.png" alt="SpotDeck"></div>
+    <button class="free-btn" onclick="openFree()"><span class="lbl">GRATUIT</span><span class="qm">?</span></button>
+    <div class="spacer"></div>
+    <div class="spotz-pill">
+      <img class="coin" src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SPOTZ.png" alt="Spotz">
+      <span id="spotz-balance">1 240</span>
+    </div>
+  </div>
+
+  <!-- CATEGORY CHIPS -->
+  <div class="chips" id="chips"></div>
+
+  <!-- TOOLS -->
+  <div class="tools">
+    <div class="tool-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg></div>
+    <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20 L16 16"/></svg><input placeholder="Rechercher" id="search" oninput="onSearch()"></div>
+    <div class="tool-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 L14.5 8.5 L20.5 9 L16 13 L17.5 19 L12 15.7 L6.5 19 L8 13 L3.5 9 L9.5 8.5 Z"/></svg></div>
+  </div>
+
+  <!-- ===== PACKS ===== -->
+  <div id="v-packs">
+    <div class="page-h"><h1>PACKS</h1><div class="sub">Ouvre un pack et découvre les spots d'Arras</div></div>
+    <div id="free-energy"></div>
+    <div class="pack-list" id="pack-list"></div>
+  </div>
+
+  <!-- ===== COLLECTION ===== -->
+  <div id="v-collection" class="hidden">
+    <div class="page-h"><h1>COLLECTION</h1><div class="sub" id="coll-sub">— / 200 spots · Arras</div></div>
+    <div class="grid3" id="coll-grid"></div>
+  </div>
+
+  <!-- ===== MARKET ===== -->
+  <div id="v-market" class="hidden">
+    <div class="page-h"><h1>MARCHÉ</h1></div>
+    <div class="m-bar">
+      <div class="m-drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M6 12h12M9 18h6"/></svg>Valeur ↓<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9 L12 15 L18 9"/></svg></div>
+      <div class="m-cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6 h15 l-1.5 9 H8 Z M6 6 L5 3 H2 M9 21 a1 1 0 1 0 0-2 M18 21 a1 1 0 1 0 0-2"/></svg><span id="cart-count">0</span></div>
+    </div>
+    <div class="m-list" id="m-list"></div>
+  </div>
+
+  <!-- ===== SHOP ===== -->
+  <div id="v-shop" class="hidden">
+    <div class="shop-hero">
+      <div class="big"><img class="coin" src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SPOTZ.png" alt="Spotz"><span id="shop-balance">1 240</span></div>
+      <div class="lbl">Tes Spotz</div>
+    </div>
+    <div class="page-h" style="padding-bottom:8px;"><h1 style="font-size:22px;">RECHARGER</h1></div>
+    <div class="sp-list" id="sp-list"></div>
+    <div class="sp-note">Paiement sécurisé par carte via Stripe. Les Spotz sont une monnaie de jeu, non remboursable et non convertible en argent réel.</div>
+  </div>
+
+  <!-- ===== OPEN ===== -->
+  <div id="v-open">
+    <div class="open-hero">
+      <button class="open-back" onclick="closeOpen()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6 L9 12 L15 18"/></svg></button>
+      <div class="open-lbl">Les cartes de</div>
+      <div class="open-title" id="open-title">Pack</div>
+      <div class="open-pouch" id="open-pouch"></div>
+      <div class="qty"><button onclick="qtyChange(-1)">−</button><span id="qty">1</span><button onclick="qtyChange(1)">+</button></div>
+      <div class="open-actions">
+        <button class="btn-green" onclick="buyAndOpen()">Acheter · <span id="open-price">120</span></button>
+        <button class="btn-demo" onclick="demoOpen()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v6 M9 6l3-3 3 3 M5 12a7 7 0 1 0 14 0"/></svg>Démo</button>
+      </div>
+    </div>
+    <div class="set-sec">
+      <div class="set-head"><div class="st">Contenu du set</div><div class="meta"><span id="set-total">200</span> cartes · 10 / pack</div></div>
+      <div class="set-grid" id="set-grid"></div>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="botnav">
+    <button class="bn active" id="bn-packs" onclick="go('packs')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="13" height="16" rx="2"/><path d="M6 8 h13"/><path d="M3 8 v10 a2 2 0 0 0 2 2 h1"/></svg>Packs</button>
+    <button class="bn" id="bn-coll" onclick="go('collection')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6 V4 a2 2 0 0 1 2-2 h4 a2 2 0 0 1 2 2 v2 M5 6 h14 a2 2 0 0 1 2 2 v10 a2 2 0 0 1-2 2 H5 a2 2 0 0 1-2-2 V8 a2 2 0 0 1 2-2 Z"/></svg>Sac</button>
+    <button class="bn" id="bn-market" onclick="go('market')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9 L6 4 H18 L20 9 M5 9 V19 H19 V9 M4 9 H20"/></svg>Marché</button>
+    <button class="bn" id="bn-shop" onclick="go('shop')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7 v10 M9.5 9.5 h4 a1.5 1.5 0 0 1 0 3 H10 a1.5 1.5 0 0 0 0 3 h4"/></svg>Boutique</button>
+  </div>
+
+</div>
+
+<!-- REVEAL -->
+<div id="reveal">
+  <div class="rv-hint" id="rv-hint">👆 Clique la carte pour la révéler !</div>
+  <div class="rv-top hide" id="rv-top">
+    <div class="rv-name" id="rv-name">—</div>
+    <div class="rv-worth"><img class="coin" src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SPOTZ.png" alt="">Vaut <span id="rv-worth">0</span></div>
+  </div>
+  <div class="rv-card" id="rv-card" onclick="flipCard()">
+    <div class="rv-flip" id="rv-flip">
+      <div class="rv-back"><img src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/card_back_basic.png" alt=""></div>
+      <div class="rv-face" id="rv-face"></div>
+    </div>
+  </div>
+  <div class="rv-count"><span class="b"><span id="rv-idx">1</span> / <span id="rv-total">10</span></span></div>
+  <button class="rv-corner rv-l" onclick="toggleMute()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9 v6 h4 l5 4 V5 L8 9 Z"/></svg></button>
+  <button class="btn-green rv-next" id="rv-next" onclick="revealAction()">Retourner</button>
+  <button class="rv-corner rv-r" onclick="skipReveal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5 L14 12 L6 19 Z M16 5 V19"/></svg></button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ================= DONNÉES =================
+const RARITY={
+  commune:{label:'Commune',value:10,hex:'#9AA0A6'},
+  peu_commun:{label:'Peu commun',value:25,hex:'#2CD05B'},
+  rare:{label:'Rare',value:75,hex:'#3B82F6'},
+  epique:{label:'Épique',value:200,hex:'#A855F7'},
+  legendaire:{label:'Légendaire',value:600,hex:'#F5A623'},
+  mythique:{label:'Mythique',value:2000,hex:'#EF4444'},
+};
+const RANK=['commune','peu_commun','rare','epique','legendaire','mythique'];
+const RECYCLE=0.4;
+
+const SPOTS=[["Beffroi d'Arras","legendaire"],["Place des Héros","legendaire"],["Grand'Place","legendaire"],["Hôtel de Ville","epique"],["Les Boves","legendaire"],["Citadelle d'Arras","legendaire"],["Porte Royale","epique"],["Mur des Fusillés","epique"],["Cathédrale Saint-Vaast","legendaire"],["Abbaye Saint-Vaast","legendaire"],["Musée des Beaux-Arts","epique"],["Médiathèque Saint-Vaast","rare"],["Théâtre d'Arras","epique"],["Hôtel de Guînes","epique"],["Académie d'Arras","rare"],["Place du Théâtre","rare"],["Rue de la Taillerie","rare"],["Rue Saint-Aubert","rare"],["Rue des Trois Visages","rare"],["Place du Wetz d'Amain","rare"],["Place Victor Hugo","peu_commun"],["Place de la Préfecture","rare"],["Préfecture du P-d-C","epique"],["Jardin Légion d'Honneur","rare"],["Val de Scarpe","rare"],["Bassins du Val de Scarpe","rare"],["Parc Cit'Loisirs","epique"],["Cimetière militaire","epique"],["Mémorial du Commonwealth","epique"],["Gare d'Arras","rare"],["Place Foch","rare"],["Bd Faidherbe","peu_commun"],["Bd Carnot","peu_commun"],["Rue Gambetta","peu_commun"],["Rue Ernestale","peu_commun"],["Rue Méaulens","rare"],["Quartier Méaulens","epique"],["Quartier des Arts","epique"],["Place de la Vacquerie","peu_commun"],["Place du Pont de Cité","peu_commun"],["Place Guy Mollet","rare"],["Parvis de la Cathédrale","rare"],["Église Saint-Jean-Baptiste","epique"],["Église Saint-Nicolas","rare"],["Église Saint-Sauveur","rare"],["Chapelle Sainte-Croix","rare"],["Maison des 3 Luppars","epique"],["Maisons des Places","legendaire"],["Arcades Grand'Place","rare"],["Pignons flamands","epique"],["La Bonne Excuse","epique"],["La Base Restaurant","rare"],["Carpediem","rare"],["Restaurant L'Authentique","rare"],["La Capsule Arras","epique"],["Megarama Arras","epique"],["Aushopping Arras","rare"],["Auchan Arras","rare"],["Passion Geek","epique"],["Marché d'Arras","epique"],["Marché des Héros","epique"],["Marché Grand'Place","rare"],["Office de Tourisme","rare"],["Maison Vayez","epique"],["Bleu d'Arras","epique"],["Les Grandes Arcades","rare"],["Rue Ronville","peu_commun"],["Rue Saint-Maurice","peu_commun"],["Rue des Jongleurs","rare"],["Rue Paul Doumer","peu_commun"],["Le Pharos","epique"],["Médiathèque Verlaine","rare"],["Ludothèque Ronville","rare"],["Piscine Desbin","rare"],["Piscine Tournesol","rare"],["Skate Park","rare"],["Golf d'Arras","epique"],["Hippodrome","epique"],["Stade Degouve-Brabant","epique"],["Complexe Grimaldi","rare"],["Musiques Modernes","rare"],["Conservatoire","epique"],["Casino d'Arras","epique"],["Quiz Room","epique"],["Cité Nature","legendaire"],["Parc du Rietz","peu_commun"],["Jardin Minelle","rare"],["Square Albert 1er","peu_commun"],["Serres municipales","rare"],["Bords de Scarpe","rare"],["Lion d'Arras","mythique"],["Les Pavés","rare"],["Les 155 Façades","mythique"],["Le Carillon","mythique"],["La Scarpe","epique"],["Façades Baroques","epique"],["Le Lion Doré","mythique"],["Beffroi de Nuit","mythique"],["Arras sous la Neige","mythique"],["Marché de Noël","mythique"],["Assiette au Bœuf","epique"],["Le Ch'ti Charivari","epique"],["The French House","epique"],["L'Entre Nous","rare"],["Silex","epique"],["Montésilvano","epique"],["L'Épicurien","epique"],["Le Galbane","epique"],["Brasserie du Lion","rare"],["Le Foucrêpe's","rare"],["Duo Gourmand","rare"],["Le Passe Temps","rare"],["Le Venezia","rare"],["Papa Angelo","rare"],["Au Feu de Bois","rare"],["Triple 5","rare"],["Shanghai","rare"],["Taobento","rare"],["Le Bambou","rare"],["La Cantine d'Asie","rare"],["54 Cocktails Bar","epique"],["Marcel Biérologie","epique"],["Baramousse","rare"],["La Canne à Sucre","rare"],["Le Madrigal","rare"],["Le Garrison","rare"],["The Melting Pub","rare"],["Glanworth Irish Pub","rare"],["Couleur Café","rare"],["Le Debrief","peu_commun"],["Karras Bar","peu_commun"],["Microbrasserie L'Arras'in","epique"],["Cavamousse","rare"],["Bières de l'Artois","peu_commun"],["Niksen","rare"],["Hemera","rare"],["Emilie & Cool Kids","rare"],["Appia","rare"],["Concentré Café","peu_commun"],["Josette","rare"],["La Griffe d'Arras","rare"],["Le Vent des Thés","rare"],["Van Den Casteele","peu_commun"],["Duployez Christian","epique"],["Aux Merveilleux de Fred","rare"],["Sophie Lebreuilly","peu_commun"],["Les Saveurs du Pain","peu_commun"],["Boulangerie Madeleine","peu_commun"],["Crousti Pain","peu_commun"],["Boulangerie Ange","peu_commun"],["Friteries du Beffroi","rare"],["Burger Braisé","rare"],["Fmac Chicken","peu_commun"],["Chicken Street","peu_commun"],["Chamas Burger","peu_commun"],["Adana Grill","peu_commun"],["French Barclette","peu_commun"],["Quick","peu_commun"],["Pizzassino","peu_commun"],["Friterie Joe","peu_commun"],["Friterie Trucker's","peu_commun"],["Friterie Lion d'Or","peu_commun"],["Hôtel Mercure Gare","epique"],["L'Univers Arras","epique"],["ibis Styles Centre","rare"],["Holiday Inn Express","rare"],["Entre Cour et Jardin","rare"],["La Cour des Grands","peu_commun"],["B&B Hotel Arras","peu_commun"],["BowlingWorld","epique"],["Chemin de Traverse (Barbot)","epique"],["Chemin de Traverse (Salengro)","rare"],["La Cave (sport)","rare"],["Basic-Fit","peu_commun"],["On Air","peu_commun"],["Fitness Park","peu_commun"],["Fitness Forme","peu_commun"],["Curves Arras","peu_commun"],["Légendarium","epique"],["La Grand Librairie","rare"],["Cap Nord","rare"],["Matsuri Go","rare"],["L'Arrageoise","peu_commun"],["K-Way Arras","peu_commun"],["Toi & Moi","peu_commun"],["Les Ginettes","peu_commun"],["Esmée","peu_commun"],["Addict Collection","peu_commun"],["Monkey Barber","rare"],["Alexis Barber","peu_commun"],["Barber Cut","peu_commun"],["Naai Ki Dukan","peu_commun"],["Arnaud Lechantre","epique"],["Les Feuilles Sauvages","rare"],["Le Floral Arrageois","peu_commun"],["Coccinelle Express","peu_commun"],["E.Leclerc Arras","rare"],["E.Leclerc Dainville","peu_commun"],["Jardin du Gouverneur","rare"],["Parc des Allées","peu_commun"]]
+  .map(([name,rarity],i)=>({id:i,name,rarity,owned:i<48}));
+
+let spotz=1240,muted=false;
+const $=id=>document.getElementById(id);
+const fmt=n=>n.toLocaleString('fr-FR');
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h;}
+function updSpotz(){$('spotz-balance').textContent=fmt(spotz);$('shop-balance').textContent=fmt(spotz);}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);}
+const coin='<img src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SPOTZ.png" alt="">';
+function glyph(hex,w){return `<svg viewBox="0 0 64 64" fill="none" stroke="${hex}" stroke-width="2.2" stroke-linejoin="round"><rect x="27" y="22" width="10" height="30"/><path d="M27 22 L32 12 L37 22 Z"/><rect x="21" y="34" width="8" height="18"/><rect x="35" y="34" width="8" height="18"/><line x1="16" y1="52" x2="48" y2="52"/><circle cx="32" cy="17" r="1.6" fill="${hex}"/></svg>`;}
+
+// Stats par carte : [points, atk, def, prix]. Override par nom, sinon défauts par rareté.
+const STATS={
+  // Peu commun
+  "Rue Gambetta":[115,24,27,15],"Rue Ernestale":[90,18,25,8],"Rue Ronville":[125,27,29,18],
+  "Rue Saint-Maurice":[105,21,28,12],"Rue Paul Doumer":[85,17,23,7],"Rue du Bloc":[95,20,30,10],
+  "Rue Wacquez-Glasson":[100,19,29,11],"Rue du Général Barbot":[120,28,26,16],
+  "Square Albert 1er":[110,16,34,14],"Parc du Rietz":[130,18,35,20],"Jardin Minelle":[105,15,32,12],
+  "Cimetière d'Arras":[150,20,35,24],"Place Saint-Étienne":[140,29,31,22],
+  // Épique
+  "Hôtel de Guînes":[315,48,61,180],"Maison des 3 Luppars":[340,57,59,200],
+  "Église Saint-Jean-Baptiste":[300,46,62,170],"Chapelle Sainte-Croix":[280,45,58,150],
+  "Hippodrome":[350,64,50,230],"Stade Degouve-Brabant":[365,65,53,240],"Golf d'Arras":[330,52,63,210],
+  "Piscine Tournesol":[295,55,48,160],"Parc de la Citadelle":[375,50,65,250],"Quartier Méaulens":[320,47,64,190],
+  // Légendaire
+  "Théâtre d'Arras":[425,66,70,500],"Gare d'Arras":[455,72,68,500],"Préfecture du P-d-C":[440,64,76,500],
+  "Hôtel de Ville":[500,76,78,500],"Arcades Grand'Place":[475,70,79,500],
+  "Façades de la Place des Héros":[490,73,80,500],"Façades de la Grand'Place":[505,77,78,500],
+  "Pignons flamands":[460,69,75,500],"Quartier Saint-Nicolas":[430,62,77,500],
+  "Parvis de la Cathédrale":[515,75,82,500],
+};
+const STATS_DEFAULT={commune:[50,8,12,3],peu_commun:[110,21,29,14],rare:[200,35,45,70],
+  epique:[330,55,58,200],legendaire:[470,71,75,500],mythique:[700,92,100,1500]};
+function getStats(name,rarity){const s=STATS[name]||STATS_DEFAULT[rarity]||[0,0,0,0];return {points:s[0],atk:s[1],def:s[2],prix:s[3]};}
+const ICO={
+  atk:'https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/ATK.png',
+  def:'https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/DEF.png',
+  prix:'https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/Prix.png',
+  points:'https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/Points.png',
+};
+
+function cardHTML(s){
+  const r=RARITY[s.rarity],h=hash(s.name);
+  const g1=`hsl(${h%360},34%,26%)`,g2=`hsl(${h*7%360},40%,13%)`;
+  const mono=s.name.replace(/[^A-Za-zÀ-ÿ]/g,'').slice(0,2).toUpperCase();
+  const st=getStats(s.name,s.rarity);
+  return `<div class="tcard"><div class="frame" style="border-color:${r.hex};box-shadow:${(s.rarity==='legendaire'||s.rarity==='mythique')?'0 0 14px '+r.hex+'66':'none'};">
+    <div class="cname">${s.name}</div>
+    <div class="cart" style="background:radial-gradient(circle at 50% 36%,${g1},${g2});"><span class="mono">${mono}</span>${glyph(r.hex)}</div>
+    <div class="cstats">
+      <span><img src="${ICO.points}" alt="">${fmt(st.points)}</span>
+      <span><img src="${ICO.atk}" alt="">${fmt(st.atk)}</span>
+      <span><img src="${ICO.def}" alt="">${fmt(st.def)}</span>
+      <span><img src="${ICO.prix}" alt="">${fmt(st.prix)}</span>
+    </div>
+    <div class="cfoot"><span class="rr" style="color:${r.hex};">${r.label}</span></div>
+  </div></div>`;
+}
+
+// ---------- chips ----------
+const CATS=[{k:'all',label:'Tous',svg:'<path d="M12 3 L15 9 L21 9 L16 13 L18 20 L12 16 L6 20 L8 13 L3 9 L9 9 Z"/>'},
+{k:'pat',label:'Patrimoine',svg:'<path d="M4 20 h16 M6 20 V10 M18 20 V10 M12 20 V10 M4 10 L12 4 L20 10 Z"/>'},
+{k:'food',label:'Food',svg:'<path d="M6 3 v7 a2 2 0 0 0 4 0 V3 M8 10 V21 M17 3 c-2 0 -3 2 -3 5 s1 4 3 4 v9"/>'},
+{k:'cult',label:'Culture',svg:'<path d="M4 5 h7 v14 H4 Z M13 5 h7 v14 h-7 Z M11 5 v14 M13 5 v14"/>'},
+{k:'night',label:'Nightlife',svg:'<path d="M5 5 h11 l-5 6 v6 M8 17 h6 M7 5 L4 2"/>'},
+{k:'nat',label:'Nature',svg:'<path d="M12 20 V13 M12 13 L8 9 M12 13 L16 9 M12 4 a4 4 0 0 1 0 8 a4 4 0 0 1 0 -8"/>'}];
+function renderChips(){
+  $('chips').innerHTML=CATS.map((c,i)=>`<div class="chip ${i===0?'active':''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${c.svg}</svg></div>`).join('');
+}
+
+// ================= NAV =================
+function go(p){
+  ['v-packs','v-collection','v-market','v-shop'].forEach(v=>$(v).classList.add('hidden'));
+  $('v-'+p).classList.remove('hidden');
+  ['bn-packs','bn-coll','bn-market','bn-shop'].forEach(b=>$(b).classList.remove('active'));
+  $({packs:'bn-packs',collection:'bn-coll',market:'bn-market',shop:'bn-shop'}[p]).classList.add('active');
+  if(p==='collection')renderColl();
+  if(p==='market')renderMarket();
+  if(p==='shop')renderShop();
+  scrollTo(0,0);
+}
+function onSearch(){ if(!$('v-collection').classList.contains('hidden'))renderColl(); }
+
+// ================= PACKS =================
+const PACKS={
+  gratuit:{name:'Gratuit',price:0,color:['#3aa0ff','#1e4fa8'],odds:{peu_commun:65,rare:28,epique:6,legendaire:0.9,mythique:0.1}},
+  classique:{name:'Classique',price:100,color:['#8aa0b8','#3a4658'],odds:{peu_commun:55,rare:33,epique:10,legendaire:1.7,mythique:0.3}},
+  premium:{name:'Premium',price:240,color:['#a06bff','#5b2ea8'],odds:{peu_commun:32,rare:42,epique:20,legendaire:5,mythique:1},g:'rare',badge:'-20%'},
+  elite:{name:'Élite',price:400,color:['#ff8a3a','#c23e1e'],odds:{peu_commun:15,rare:35,epique:35,legendaire:12,mythique:3},g:'epique'},
+  legendaire:{name:'Légendaire',price:550,color:['#f5c542','#b97a0c'],odds:{peu_commun:5,rare:22,epique:40,legendaire:26,mythique:7},g:'legendaire'},
+};
+function pouch(pk){
+  return `<div class="pouch">
+    <img class="pack-img" src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/SD_Pack1.png" alt="">
+    <span class="cnt">10<small>CARTES</small></span>
+  </div>`;
+}
+function renderPacks(){
+  $('pack-list').innerHTML=Object.entries(PACKS).map(([k,pk])=>{
+    const isFree=(k==='gratuit');
+    const priceHtml=isFree?'<span class="price-free">GRATUIT</span>':`${coin.replace('<img','<img class="coin"')}${fmt(pk.price)}`;
+    const badge=pk.badge?`<div class="pack-badge">${pk.badge}</div>`:'';
+    const onClick=isFree?"openFree()":`openPack('${k}')`;
+    return `<div class="pack-card" onclick="${onClick}">
+      ${badge}
+      <div class="pack-visual"><div class="fan f2"></div><div class="fan f1"></div>${pouch(pk)}</div>
+      <div class="pack-foot"><div class="price">${priceHtml}</div><div class="view-link">Voir<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6 L15 12 L9 18"/></svg></div></div>
+    </div>`;
+  }).join('');
+}
+
+// ---------- open ----------
+let curPack=null,qty=1;
+function openPack(k){
+  curPack=k;qty=1;const pk=PACKS[k];
+  $('open-title').textContent=pk.name;
+  $('open-price').textContent=fmt(pk.price);
+  $('qty').textContent=1;
+  $('open-pouch').innerHTML=pouch(pk);
+  const sample=[...SPOTS].sort((a,b)=>RARITY[b.rarity].value-RARITY[a.rarity].value).slice(0,30);
+  $('set-total').textContent=SPOTS.length;
+  $('set-grid').innerHTML=sample.map(cardHTML).join('');
+  $('v-open').classList.add('show');scrollTo(0,0);
+}
+function closeOpen(){$('v-open').classList.remove('show');}
+function qtyChange(d){qty=Math.max(1,Math.min(10,qty+d));$('qty').textContent=qty;$('open-price').textContent=fmt(PACKS[curPack].price*qty);}
+function buyAndOpen(){const c=PACKS[curPack].price*qty;if(spotz<c){toast('Pas assez de Spotz');closeOpen();go('shop');return;}spotz-=c;updSpotz();demoOpen();}
+function demoOpen(){startReveal(draw(curPack));}
+function wp(o){const e=Object.entries(o),t=e.reduce((s,[,w])=>s+w,0);let r=Math.random()*t;for(const[k,w]of e){if(r<w)return k;r-=w;}return e[e.length-1][0];}
+function draw(k){const pk=PACKS[k],rar=[];for(let i=0;i<10;i++)rar.push(wp(pk.odds));if(pk.g){const m=RANK.indexOf(pk.g);if(!rar.some(x=>RANK.indexOf(x)>=m))rar[9]=pk.g;}
+  // hit card: la dernière est toujours >= rare ET >= la meilleure des 9 autres
+  const guaranteed=Math.max(RANK.indexOf('rare'),...rar.slice(0,9).map(x=>RANK.indexOf(x)));
+  if(RANK.indexOf(rar[9])<guaranteed)rar[9]=RANK[Math.min(guaranteed,RANK.length-1)];
+  return rar.map(r=>{const p=SPOTS.filter(s=>s.rarity===r);return p[Math.floor(Math.random()*p.length)];});}
+
+// ================= REVEAL =================
+let rq=[],ri=0,flipped=false;
+function startReveal(cards){rq=cards;ri=0;$('rv-total').textContent=cards.length;$('reveal').classList.add('show');showRev();}
+function showRev(){
+  const s=rq[ri];flipped=false;
+  // reset : dos visible, infos cachées
+  $('reveal').className='show';
+  $('rv-flip').classList.remove('flipped');
+  $('rv-top').classList.add('hide');
+  $('rv-hint').classList.remove('hide');
+  $('rv-idx').textContent=ri+1;
+  const last=(ri===rq.length-1);
+  $('rv-hint').innerHTML=last?'⭐ Dernière carte — la meilleure !':'👆 Clique la carte pour la révéler !';
+  $('rv-next').textContent='Retourner';
+  $('rv-face').innerHTML=cardHTML(s);
+  const c=$('rv-card');c.style.animation='none';void c.offsetWidth;c.style.animation='';
+}
+function flipCard(){
+  if(flipped)return;
+  flipped=true;
+  const s=rq[ri],st=getStats(s.name,s.rarity);
+  $('rv-flip').classList.add('flipped');
+  $('rv-name').textContent=s.name;$('rv-worth').textContent=fmt(st.prix);
+  $('rv-hint').classList.add('hide');
+  setTimeout(()=>{
+    $('reveal').className='show'+((s.rarity==='legendaire')?' r-legendaire':(s.rarity==='mythique')?' r-mythique':'');
+    $('rv-top').classList.remove('hide');
+  },300);
+  const real=SPOTS.find(x=>x.name===s.name);if(real)real.owned=true;
+  $('rv-next').textContent=(ri===rq.length-1)?'Terminer':'Carte suivante';
+}
+function revealAction(){
+  if(!flipped){flipCard();return;}
+  ri++;if(ri>=rq.length){skipReveal();return;}showRev();
+}
+function nextReveal(){revealAction();}
+function skipReveal(){rq.forEach(s=>{const r=SPOTS.find(x=>x.name===s.name);if(r)r.owned=true;});$('reveal').classList.remove('show');closeOpen();toast('Ajouté à ton sac');go('collection');}
+function toggleMute(){muted=!muted;toast(muted?'Son coupé':'Son activé');}
+
+// ================= COLLECTION =================
+function renderColl(){
+  const q=($('search').value||'').toLowerCase();
+  const owned=SPOTS.filter(s=>s.owned).length;
+  $('coll-sub').textContent=`${owned} / ${SPOTS.length} spots · Arras`;
+  const list=SPOTS.filter(s=>!q||s.name.toLowerCase().includes(q));
+  $('coll-grid').innerHTML=list.map(s=>s.owned
+    ?`<div class="cell" onclick="cardTap(${s.id})">${cardHTML(s)}</div>`
+    :`<div class="cell"><div class="locked"><svg viewBox="0 0 24 24" fill="none" stroke="#8B8B98" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div></div>`
+  ).join('');
+}
+function cardTap(id){const s=SPOTS[id],r=RARITY[s.rarity];toast(`${s.name} · ${r.label} · ${fmt(r.value)} Spotz`);}
+
+// ================= MARKET =================
+const MARKET=[
+  {name:"Le Beffroi",rarity:"legendaire",price:720,seller:"Marie62"},
+  {name:"Le Carillon",rarity:"mythique",price:2400,seller:"Collector_59"},
+  {name:"La Citadelle d'Arras",rarity:"legendaire",price:680,seller:"ArrasFan"},
+  {name:"Cité Nature",rarity:"legendaire",price:640,seller:"Sophie_A"},
+  {name:"Les Boves",rarity:"epique",price:240,seller:"Hugo_D"},
+  {name:"54 Cocktails Bar",rarity:"epique",price:210,seller:"NightOwl"},
+  {name:"Marcel Biérologie",rarity:"epique",price:230,seller:"BeerLover"},
+  {name:"Théâtre d'Arras",rarity:"epique",price:220,seller:"Culture_A"},
+  {name:"Le Galbane",rarity:"epique",price:195,seller:"Foodie62"},
+];
+function renderMarket(){
+  $('m-list').innerHTML=MARKET.map((m,i)=>{
+    const can=spotz>=m.price;
+    return `<div class="m-item">
+      <div class="m-thumb">${cardHTML({name:m.name,rarity:m.rarity})}</div>
+      <div class="m-name">${m.name}</div>
+      <div class="m-sub">${RARITY[m.rarity].label} · vendu par ${m.seller}</div>
+      <div class="m-price">${coin.replace('<img','<img class="coin"')}${fmt(m.price)}</div>
+      <div class="m-actions">
+        <button class="m-mag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20 L16 16"/></svg></button>
+        <button class="m-add" ${can?'':'disabled'} onclick="buyM(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5 v14 M5 12 h14"/></svg>${can?'Acheter':'Trop cher'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function buyM(i){const m=MARKET[i];if(spotz<m.price)return;spotz-=m.price;updSpotz();const s=SPOTS.find(x=>x.name===m.name);if(s)s.owned=true;MARKET.splice(i,1);renderMarket();toast(`${m.name} achetée !`);}
+
+// ================= SHOP =================
+const SP=[
+  {a:100,b:0,p:'0,99 €',img:'recharger_100.png'},
+  {a:550,b:10,p:'4,99 €',img:'recharger_550.png'},
+  {a:1200,b:20,p:'9,99 €',best:1,img:'recharger_1200.png'},
+  {a:2600,b:30,p:'19,99 €',img:'recharger_2600.png'}
+];
+function renderShop(){updSpotz();$('sp-list').innerHTML=SP.map((p,i)=>`
+  <div class="sp-item ${p.best?'best':''}">
+    <div class="sp-stack"><img src="https://raw.githubusercontent.com/hugosourcevc/SpotDeck/refs/heads/main/${p.img}" alt=""></div>
+    <div class="sp-info"><div class="sp-amt">${fmt(p.a)} Spotz</div><div class="sp-bonus">${p.b?`+${p.b} % offerts`:'Pack de départ'}</div></div>
+    <button class="sp-buy" onclick="buyS(${i})">${p.p}</button>
+  </div>`).join('');}
+function buyS(i){spotz+=SP[i].a;updSpotz();toast(`+${fmt(SP[i].a)} Spotz (démo Stripe)`);}
+
+// ================= FREE PACKS =================
+const FREE_MAX=9, FREE_INTERVAL=10*60*1000; // 9 max, 1 toutes les 10 min
+let freeCount=0, freeLastTs=Date.now();
+
+function freeLoad(){
+  try{
+    const raw=localStorage.getItem('sd_free');
+    if(raw){const d=JSON.parse(raw);freeCount=d.c??0;freeLastTs=d.t??Date.now();}
+    else{freeCount=1;freeLastTs=Date.now();} // 1 pack offert au départ
+  }catch(e){freeCount=1;freeLastTs=Date.now();}
+  freeTick();
+}
+function freeSave(){
+  try{localStorage.setItem('sd_free',JSON.stringify({c:freeCount,t:freeLastTs}));}catch(e){}
+}
+function freeTick(){
+  // rattrapage du temps écoulé (y compris absence), plafonné à FREE_MAX
+  if(freeCount<FREE_MAX){
+    const elapsed=Date.now()-freeLastTs;
+    const gained=Math.floor(elapsed/FREE_INTERVAL);
+    if(gained>0){
+      freeCount=Math.min(FREE_MAX,freeCount+gained);
+      freeLastTs+=gained*FREE_INTERVAL;
+      if(freeCount>=FREE_MAX)freeLastTs=Date.now();
+      freeSave();
+    }
+  }else{
+    freeLastTs=Date.now();
+  }
+  renderFree();
+}
+function freeTimeLeft(){
+  if(freeCount>=FREE_MAX)return null;
+  const ms=FREE_INTERVAL-((Date.now()-freeLastTs)%FREE_INTERVAL);
+  const m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000);
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function renderFree(){
+  const el=$('free-energy');if(!el)return;
+  const tl=freeTimeLeft();
+  const sub = freeCount>=FREE_MAX ? 'Réserve pleine !' : (tl?('Prochain dans '+tl):'');
+  const slots=Array.from({length:FREE_MAX},(_,i)=>
+    `<div class="fe-slot${i<freeCount?' on':''}"><svg viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2"><path d="M13 2 L4 14 H11 L11 22 L20 10 H13 Z"/></svg></div>`
+  ).join('');
+  el.innerHTML=`<div class="fe-card">
+    <div class="fe-top">
+      <div class="fe-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2a1a05" stroke-width="2.2"><path d="M13 2 L4 14 H11 L11 22 L20 10 H13 Z"/></svg></div>
+      <div class="fe-info"><div class="fe-title">Pack Gratuit · ${freeCount}/${FREE_MAX}</div><div class="fe-sub">${sub}</div></div>
+      <button class="fe-open" onclick="openFree()" ${freeCount<1?'disabled':''}>Ouvrir</button>
+    </div>
+    <div class="fe-slots">${slots}</div>
+  </div>`;
+}
+function openFree(){
+  freeTick();
+  if(freeCount<1){toast('Aucun pack gratuit disponible');return;}
+  if(freeCount>=FREE_MAX)freeLastTs=Date.now(); // relance le timer si on était plein
+  freeCount--;
+  freeSave();renderFree();
+  startReveal(draw('gratuit')); // ouverture 1 par 1 comme un pack Gratuit
+}
+
+freeLoad();
+setInterval(freeTick,1000);
+
+// init
+renderChips();renderPacks();updSpotz();
+// loader
+window.addEventListener('load',()=>{setTimeout(()=>{const l=document.getElementById('loader');if(l){l.classList.add('hide');setTimeout(()=>l.style.display='none',450);}},900);});
+</script>
+</body>
+</html>

@@ -1,0 +1,2027 @@
+{
+  "game": "SpotDeck",
+  "city": "Arras",
+  "currency": "Spotz",
+  "config": {
+    "rarityValues": {
+      "commune": 10,
+      "peu_commun": 25,
+      "rare": 75,
+      "epique": 200,
+      "legendaire": 600,
+      "mythique": 2000
+    },
+    "recyclePct": 0.4,
+    "marketFeePct": 0.15,
+    "priceCapMultiplier": 3
+  },
+  "counts": {
+    "legendaire": 9,
+    "epique": 49,
+    "rare": 83,
+    "peu_commun": 52,
+    "mythique": 7
+  },
+  "cards": [
+    {
+      "id": "spot_001",
+      "name": "Beffroi d'Arras",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "L'emblème d'Arras, lion doré au sommet, dominant la ville de ses 75 m."
+    },
+    {
+      "id": "spot_002",
+      "name": "Place des Héros",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "La petite place entourée de façades flamandes, dominée par le Beffroi."
+    },
+    {
+      "id": "spot_003",
+      "name": "Grand'Place",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Immense place entourée de maisons aux façades typiques d'Arras."
+    },
+    {
+      "id": "spot_004",
+      "name": "Hôtel de Ville",
+      "rarity": "epique",
+      "category": "patrimoine",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Hôtel de ville gothique flamboyant au pied du Beffroi."
+    },
+    {
+      "id": "spot_005",
+      "name": "Les Boves",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Réseau souterrain de galeries creusées sous la ville."
+    },
+    {
+      "id": "spot_006",
+      "name": "Citadelle d'Arras",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Fortification de Vauban (XVIIe), classée UNESCO."
+    },
+    {
+      "id": "spot_007",
+      "name": "Porte Royale",
+      "rarity": "epique",
+      "category": "patrimoine",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Entrée monumentale de la Citadelle."
+    },
+    {
+      "id": "spot_008",
+      "name": "Mur des Fusillés",
+      "rarity": "epique",
+      "category": "memoire",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Lieu de mémoire de la Seconde Guerre mondiale."
+    },
+    {
+      "id": "spot_009",
+      "name": "Cathédrale Saint-Vaast",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Immense édifice néoclassique près de l'ancienne abbaye."
+    },
+    {
+      "id": "spot_010",
+      "name": "Abbaye Saint-Vaast",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Grand ensemble historique d'Arras."
+    },
+    {
+      "id": "spot_011",
+      "name": "Musée des Beaux-Arts",
+      "rarity": "epique",
+      "category": "culture",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Musée installé dans l'ancienne abbaye Saint-Vaast."
+    },
+    {
+      "id": "spot_012",
+      "name": "Médiathèque Saint-Vaast",
+      "rarity": "rare",
+      "category": "culture",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Espace culturel : livres, médias et événements."
+    },
+    {
+      "id": "spot_013",
+      "name": "Théâtre d'Arras",
+      "rarity": "epique",
+      "category": "culture",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Théâtre du XVIIIe, aujourd'hui scène nationale."
+    },
+    {
+      "id": "spot_014",
+      "name": "Hôtel de Guînes",
+      "rarity": "epique",
+      "category": "culture",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Hôtel particulier accueillant des activités culturelles."
+    },
+    {
+      "id": "spot_015",
+      "name": "Académie d'Arras",
+      "rarity": "rare",
+      "category": "culture",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Institution intellectuelle fondée au XVIIIe siècle."
+    },
+    {
+      "id": "spot_016",
+      "name": "Place du Théâtre",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Petite place devant le Théâtre d'Arras."
+    },
+    {
+      "id": "spot_017",
+      "name": "Rue de la Taillerie",
+      "rarity": "rare",
+      "category": "rue",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Rue reliant la Grand'Place à la Place des Héros."
+    },
+    {
+      "id": "spot_018",
+      "name": "Rue Saint-Aubert",
+      "rarity": "rare",
+      "category": "rue",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Une des rues commerçantes centrales."
+    },
+    {
+      "id": "spot_019",
+      "name": "Rue des Trois Visages",
+      "rarity": "rare",
+      "category": "rue",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Rue du centre historique au nom particulier."
+    },
+    {
+      "id": "spot_020",
+      "name": "Place du Wetz d'Amain",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Place du centre-ville et ses activités culturelles."
+    },
+    {
+      "id": "spot_021",
+      "name": "Place Victor Hugo",
+      "rarity": "peu_commun",
+      "category": "patrimoine",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Place octogonale du centre d'Arras."
+    },
+    {
+      "id": "spot_022",
+      "name": "Place de la Préfecture",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Place bordée de bâtiments administratifs."
+    },
+    {
+      "id": "spot_023",
+      "name": "Préfecture du Pas-de-Calais",
+      "rarity": "epique",
+      "category": "patrimoine",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Bâtiment administratif historique."
+    },
+    {
+      "id": "spot_024",
+      "name": "Jardin de la Légion d'Honneur",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Jardin près de l'ancienne abbaye Saint-Vaast."
+    },
+    {
+      "id": "spot_025",
+      "name": "Val de Scarpe",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Secteur verdoyant traversé par la Scarpe."
+    },
+    {
+      "id": "spot_026",
+      "name": "Bassins du Val de Scarpe",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Bassins et jardins au bord de l'eau."
+    },
+    {
+      "id": "spot_027",
+      "name": "Parc Cit'Loisirs",
+      "rarity": "epique",
+      "category": "loisirs",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Espace de loisirs autour de la Citadelle."
+    },
+    {
+      "id": "spot_028",
+      "name": "Cimetière militaire d'Arras",
+      "rarity": "epique",
+      "category": "memoire",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Lieu de mémoire de la Première Guerre mondiale."
+    },
+    {
+      "id": "spot_029",
+      "name": "Mémorial du Commonwealth",
+      "rarity": "epique",
+      "category": "memoire",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Monument aux soldats du Commonwealth."
+    },
+    {
+      "id": "spot_030",
+      "name": "Gare d'Arras",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Gare principale et point d'arrivée majeur."
+    },
+    {
+      "id": "spot_031",
+      "name": "Place Foch",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Grande place devant la gare."
+    },
+    {
+      "id": "spot_032",
+      "name": "Boulevard Faidherbe",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Grand axe reliant la gare au centre."
+    },
+    {
+      "id": "spot_033",
+      "name": "Boulevard Carnot",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Axe urbain important du centre."
+    },
+    {
+      "id": "spot_034",
+      "name": "Rue Gambetta",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Rue centrale bordée de commerces."
+    },
+    {
+      "id": "spot_035",
+      "name": "Rue Ernestale",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Rue du centre-ville commerçante."
+    },
+    {
+      "id": "spot_036",
+      "name": "Rue Méaulens",
+      "rarity": "rare",
+      "category": "rue",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Rue historique du centre."
+    },
+    {
+      "id": "spot_037",
+      "name": "Quartier Méaulens",
+      "rarity": "epique",
+      "category": "quartier",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Ancien quartier aux petites rues historiques."
+    },
+    {
+      "id": "spot_038",
+      "name": "Quartier des Arts",
+      "rarity": "epique",
+      "category": "quartier",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Secteur culturel autour du Théâtre."
+    },
+    {
+      "id": "spot_039",
+      "name": "Place de la Vacquerie",
+      "rarity": "peu_commun",
+      "category": "patrimoine",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Place entourée de bâtiments historiques."
+    },
+    {
+      "id": "spot_040",
+      "name": "Place du Pont de Cité",
+      "rarity": "peu_commun",
+      "category": "patrimoine",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Petite place proche de la Scarpe."
+    },
+    {
+      "id": "spot_041",
+      "name": "Place Guy Mollet",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Place au nom d'un homme politique arrageois."
+    },
+    {
+      "id": "spot_042",
+      "name": "Parvis de la Cathédrale",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Espace devant la cathédrale Saint-Vaast."
+    },
+    {
+      "id": "spot_043",
+      "name": "Église Saint-Jean-Baptiste",
+      "rarity": "epique",
+      "category": "patrimoine",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Église historique rue Wacquez-Glason."
+    },
+    {
+      "id": "spot_044",
+      "name": "Église Saint-Nicolas-en-Cité",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Édifice religieux du quartier de la Cité."
+    },
+    {
+      "id": "spot_045",
+      "name": "Église Saint-Sauveur",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Église du centre d'Arras."
+    },
+    {
+      "id": "spot_046",
+      "name": "Chapelle Sainte-Croix",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Petit patrimoine religieux."
+    },
+    {
+      "id": "spot_047",
+      "name": "Maison des 3 Luppars",
+      "rarity": "epique",
+      "category": "patrimoine",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Maison remarquable des Places d'Arras."
+    },
+    {
+      "id": "spot_048",
+      "name": "Maisons des Places",
+      "rarity": "legendaire",
+      "category": "patrimoine",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Ensemble de façades flamandes emblématiques."
+    },
+    {
+      "id": "spot_049",
+      "name": "Arcades de la Grand'Place",
+      "rarity": "rare",
+      "category": "patrimoine",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Arcades caractéristiques des maisons de la Grand'Place."
+    },
+    {
+      "id": "spot_050",
+      "name": "Pignons flamands",
+      "rarity": "epique",
+      "category": "patrimoine",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Façades à pignons de l'architecture arrageoise."
+    },
+    {
+      "id": "spot_051",
+      "name": "La Bonne Excuse",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Bar-restaurant arrageois, « bonne adresse » du centre."
+    },
+    {
+      "id": "spot_052",
+      "name": "La Base Restaurant",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Restaurant rue de la Taillerie."
+    },
+    {
+      "id": "spot_053",
+      "name": "Carpediem",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Restaurant français du centre-ville."
+    },
+    {
+      "id": "spot_054",
+      "name": "Restaurant L'Authentique",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Restaurant boulevard Carnot."
+    },
+    {
+      "id": "spot_055",
+      "name": "La Capsule Arras",
+      "rarity": "epique",
+      "category": "bar",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Bar à bières aux 30 becs, rue de la Taillerie."
+    },
+    {
+      "id": "spot_056",
+      "name": "Megarama Arras",
+      "rarity": "epique",
+      "category": "loisirs",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Cinéma de la Grand'Place."
+    },
+    {
+      "id": "spot_057",
+      "name": "Aushopping Arras",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Grand centre commercial zone Winston Churchill."
+    },
+    {
+      "id": "spot_058",
+      "name": "Auchan Arras",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Hypermarché de la zone commerciale."
+    },
+    {
+      "id": "spot_059",
+      "name": "Passion Geek",
+      "rarity": "epique",
+      "category": "commerce",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Boutique de figurines et univers geek."
+    },
+    {
+      "id": "spot_060",
+      "name": "Marché d'Arras",
+      "rarity": "epique",
+      "category": "marche",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Marché traditionnel, produits frais et locaux."
+    },
+    {
+      "id": "spot_061",
+      "name": "Marché de la Place des Héros",
+      "rarity": "epique",
+      "category": "marche",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Marché dans le décor de la Place des Héros."
+    },
+    {
+      "id": "spot_062",
+      "name": "Marché de la Grand'Place",
+      "rarity": "rare",
+      "category": "marche",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Marché sur l'une des grandes places."
+    },
+    {
+      "id": "spot_063",
+      "name": "Office de Tourisme",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Point d'information pour découvrir la ville."
+    },
+    {
+      "id": "spot_064",
+      "name": "Maison Vayez",
+      "rarity": "epique",
+      "category": "commerce",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Maison locale de spécialités gourmandes et café."
+    },
+    {
+      "id": "spot_065",
+      "name": "Bleu d'Arras",
+      "rarity": "epique",
+      "category": "commerce",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Spécialité et identité gastronomique locale."
+    },
+    {
+      "id": "spot_066",
+      "name": "Les Grandes Arcades",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Ensemble de commerces du cœur historique."
+    },
+    {
+      "id": "spot_067",
+      "name": "Rue Ronville",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Rue connue du centre-ville."
+    },
+    {
+      "id": "spot_068",
+      "name": "Rue Saint-Maurice",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Rue historique proche du centre."
+    },
+    {
+      "id": "spot_069",
+      "name": "Rue des Jongleurs",
+      "rarity": "rare",
+      "category": "rue",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Rue du quartier des Arts."
+    },
+    {
+      "id": "spot_070",
+      "name": "Rue Paul Doumer",
+      "rarity": "peu_commun",
+      "category": "rue",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Axe urbain du centre."
+    },
+    {
+      "id": "spot_071",
+      "name": "Le Pharos",
+      "rarity": "epique",
+      "category": "culture",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Pôle culturel : spectacles et événements."
+    },
+    {
+      "id": "spot_072",
+      "name": "Médiathèque Verlaine",
+      "rarity": "rare",
+      "category": "culture",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Médiathèque du quartier Saint-Pol."
+    },
+    {
+      "id": "spot_073",
+      "name": "Bibliothèque-ludothèque Ronville",
+      "rarity": "rare",
+      "category": "culture",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Livres, jeux et activités culturelles."
+    },
+    {
+      "id": "spot_074",
+      "name": "Piscine Desbin",
+      "rarity": "rare",
+      "category": "sport",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Équipement sportif municipal."
+    },
+    {
+      "id": "spot_075",
+      "name": "Piscine Tournesol",
+      "rarity": "rare",
+      "category": "sport",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Piscine à l'architecture Tournesol."
+    },
+    {
+      "id": "spot_076",
+      "name": "Skate Park d'Arras",
+      "rarity": "rare",
+      "category": "sport",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Espace dédié au skate et aux sports urbains."
+    },
+    {
+      "id": "spot_077",
+      "name": "Golf d'Arras",
+      "rarity": "epique",
+      "category": "sport",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Parcours de golf de l'agglomération."
+    },
+    {
+      "id": "spot_078",
+      "name": "Hippodrome d'Arras",
+      "rarity": "epique",
+      "category": "sport",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Site de courses hippiques."
+    },
+    {
+      "id": "spot_079",
+      "name": "Stade Degouve-Brabant",
+      "rarity": "epique",
+      "category": "sport",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Stade important de la ville."
+    },
+    {
+      "id": "spot_080",
+      "name": "Complexe sportif Grimaldi",
+      "rarity": "rare",
+      "category": "sport",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Équipement pour activités physiques."
+    },
+    {
+      "id": "spot_081",
+      "name": "Centre des Musiques Modernes",
+      "rarity": "rare",
+      "category": "culture",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Apprentissage des musiques actuelles."
+    },
+    {
+      "id": "spot_082",
+      "name": "Conservatoire d'Arras",
+      "rarity": "epique",
+      "category": "culture",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Enseignement artistique et musical."
+    },
+    {
+      "id": "spot_083",
+      "name": "Casino d'Arras",
+      "rarity": "epique",
+      "category": "culture",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Salle de spectacle et événements."
+    },
+    {
+      "id": "spot_084",
+      "name": "Quiz Room Arras",
+      "rarity": "epique",
+      "category": "loisirs",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Quiz immersifs en équipe."
+    },
+    {
+      "id": "spot_085",
+      "name": "Cité Nature",
+      "rarity": "legendaire",
+      "category": "culture",
+      "valueSpotz": 600,
+      "recycleSpotz": 240,
+      "marketable": true,
+      "description": "Sciences, nature et alimentation en expositions."
+    },
+    {
+      "id": "spot_086",
+      "name": "Parc du Rietz",
+      "rarity": "peu_commun",
+      "category": "nature",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Espace vert pour promenades et loisirs."
+    },
+    {
+      "id": "spot_087",
+      "name": "Jardin Minelle",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Espace vert urbain au bord d'un étang."
+    },
+    {
+      "id": "spot_088",
+      "name": "Square Albert 1er",
+      "rarity": "peu_commun",
+      "category": "nature",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Espace vert près du secteur Saint-Vaast."
+    },
+    {
+      "id": "spot_089",
+      "name": "Serres municipales",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Installations végétales de la ville."
+    },
+    {
+      "id": "spot_090",
+      "name": "Promenade des Bords de Scarpe",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Parcours au bord de l'eau du Val de Scarpe."
+    },
+    {
+      "id": "spot_091",
+      "name": "Lion d'Arras",
+      "rarity": "mythique",
+      "category": "symbole",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "Le lion doré du Beffroi, symbole de la ville."
+    },
+    {
+      "id": "spot_092",
+      "name": "Les Pavés d'Arras",
+      "rarity": "rare",
+      "category": "symbole",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Pavés donnant aux places leur apparence."
+    },
+    {
+      "id": "spot_093",
+      "name": "Les 155 Façades",
+      "rarity": "mythique",
+      "category": "symbole",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "155 façades et 345 colonnes des Places."
+    },
+    {
+      "id": "spot_094",
+      "name": "Le Carillon du Beffroi",
+      "rarity": "mythique",
+      "category": "symbole",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "Carillon de 40 cloches."
+    },
+    {
+      "id": "spot_095",
+      "name": "La Scarpe",
+      "rarity": "epique",
+      "category": "nature",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Rivière traversant Arras."
+    },
+    {
+      "id": "spot_096",
+      "name": "Les Façades Baroques",
+      "rarity": "epique",
+      "category": "symbole",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Style baroque flamand des deux grandes places."
+    },
+    {
+      "id": "spot_097",
+      "name": "Le Lion Doré",
+      "rarity": "mythique",
+      "category": "symbole",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "Version « collector » du lion du Beffroi."
+    },
+    {
+      "id": "spot_098",
+      "name": "Le Beffroi de Nuit",
+      "rarity": "mythique",
+      "category": "event",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "Variante nocturne du monument emblématique."
+    },
+    {
+      "id": "spot_099",
+      "name": "Arras sous la Neige",
+      "rarity": "mythique",
+      "category": "event",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "Version hivernale des Places enneigées."
+    },
+    {
+      "id": "spot_100",
+      "name": "Marché de Noël d'Arras",
+      "rarity": "mythique",
+      "category": "event",
+      "valueSpotz": 2000,
+      "recycleSpotz": 800,
+      "marketable": true,
+      "description": "Centre-ville festif, illuminations et décorations."
+    },
+    {
+      "id": "spot_101",
+      "name": "Assiette au Bœuf",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Institution Grand'Place, steak-frites à volonté."
+    },
+    {
+      "id": "spot_102",
+      "name": "Le Ch'ti Charivari",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Table Grand'Place, grillades à la pierre."
+    },
+    {
+      "id": "spot_103",
+      "name": "The French House",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Adresse animée avec vue sur la Grand'Place."
+    },
+    {
+      "id": "spot_104",
+      "name": "L'Entre Nous",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Brasserie française de la Grand'Place."
+    },
+    {
+      "id": "spot_105",
+      "name": "Silex",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Table soignée Grand'Place, cuisine à la braise."
+    },
+    {
+      "id": "spot_106",
+      "name": "Montésilvano",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Pizzeria réputée de la Grand'Place, cave voûtée."
+    },
+    {
+      "id": "spot_107",
+      "name": "L'Épicurien",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Table gastronomique place du Maréchal Foch."
+    },
+    {
+      "id": "spot_108",
+      "name": "Le Galbane",
+      "rarity": "epique",
+      "category": "restaurant",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Table raffinée place des Héros."
+    },
+    {
+      "id": "spot_109",
+      "name": "La Brasserie du Lion",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Brasserie place des Héros avec terrasse."
+    },
+    {
+      "id": "spot_110",
+      "name": "Le Foucrêpe's",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Crêperie très fréquentée place des Héros."
+    },
+    {
+      "id": "spot_111",
+      "name": "Duo Gourmand",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Petite table à la carte changeante."
+    },
+    {
+      "id": "spot_112",
+      "name": "Le Passe Temps",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Restaurant-glacier place du Maréchal Foch."
+    },
+    {
+      "id": "spot_113",
+      "name": "Le Venezia",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Institution italienne rue aux Ours."
+    },
+    {
+      "id": "spot_114",
+      "name": "Papa Angelo",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Pizza napolitaine avenue Paul Michonneau."
+    },
+    {
+      "id": "spot_115",
+      "name": "Au Feu de Bois",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Pizzeria au feu de bois avenue Winston Churchill."
+    },
+    {
+      "id": "spot_116",
+      "name": "Triple 5",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Pizzas et burgers rue d'Amiens."
+    },
+    {
+      "id": "spot_117",
+      "name": "Shanghai",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Cuisine chinoise et ramen rue des Dominicains."
+    },
+    {
+      "id": "spot_118",
+      "name": "Taobento",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Sushi, poke et cuisine asiatique rue Gambetta."
+    },
+    {
+      "id": "spot_119",
+      "name": "Le Bambou",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Ramen et cuisine zen boulevard de Strasbourg."
+    },
+    {
+      "id": "spot_120",
+      "name": "La Cantine d'Asie",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Ramen et udon rue de la Housse."
+    },
+    {
+      "id": "spot_121",
+      "name": "54 Cocktails Bar",
+      "rarity": "epique",
+      "category": "bar",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Grand bar à cocktails de la Grand'Place."
+    },
+    {
+      "id": "spot_122",
+      "name": "Marcel Comptoir de Biérologie",
+      "rarity": "epique",
+      "category": "bar",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Comptoir de biérologie rue de la Taillerie."
+    },
+    {
+      "id": "spot_123",
+      "name": "Baramousse",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Bar à bières et saucissons rue de la Taillerie."
+    },
+    {
+      "id": "spot_124",
+      "name": "La Canne à Sucre",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Rhumerie et cocktails rue de la Taillerie."
+    },
+    {
+      "id": "spot_125",
+      "name": "Le Madrigal",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Bar à cocktails ambiance cubaine, Grand'Place."
+    },
+    {
+      "id": "spot_126",
+      "name": "Le Garrison",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Bar au décor années 1920 rue Désiré Delansorne."
+    },
+    {
+      "id": "spot_127",
+      "name": "The Melting Pub",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Pub traditionnel place des Héros."
+    },
+    {
+      "id": "spot_128",
+      "name": "Glanworth Irish Pub",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Pub irlandais rue de la Taillerie."
+    },
+    {
+      "id": "spot_129",
+      "name": "Couleur Café",
+      "rarity": "rare",
+      "category": "bar",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Bar à bières animé place des Héros."
+    },
+    {
+      "id": "spot_130",
+      "name": "Le Debrief",
+      "rarity": "peu_commun",
+      "category": "bar",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Bar familial face au Mont-de-Piété."
+    },
+    {
+      "id": "spot_131",
+      "name": "Karras Bar",
+      "rarity": "peu_commun",
+      "category": "bar",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Bar de quartier rue Désiré Delansorne."
+    },
+    {
+      "id": "spot_132",
+      "name": "Microbrasserie L'Arras'in",
+      "rarity": "epique",
+      "category": "bar",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Microbrasserie artisanale rue Désiré Bras."
+    },
+    {
+      "id": "spot_133",
+      "name": "Cavamousse",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Cave à bières françaises et belges."
+    },
+    {
+      "id": "spot_134",
+      "name": "Bières de l'Artois",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Cave spécialisée bières de l'Artois."
+    },
+    {
+      "id": "spot_135",
+      "name": "Niksen",
+      "rarity": "rare",
+      "category": "cafe",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Café de spécialité et brunch rue Désiré Delansorne."
+    },
+    {
+      "id": "spot_136",
+      "name": "Hemera",
+      "rarity": "rare",
+      "category": "cafe",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Coffee shop et coin librairie Grand'Place."
+    },
+    {
+      "id": "spot_137",
+      "name": "Emilie and the Cool Kids",
+      "rarity": "rare",
+      "category": "cafe",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Bagels, salades et pâtisseries rue Ernestale."
+    },
+    {
+      "id": "spot_138",
+      "name": "Appia",
+      "rarity": "rare",
+      "category": "cafe",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Brunch kids & dogs friendly rue de la Housse."
+    },
+    {
+      "id": "spot_139",
+      "name": "Concentré Café",
+      "rarity": "peu_commun",
+      "category": "cafe",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Café-coworking rue Paul Doumer."
+    },
+    {
+      "id": "spot_140",
+      "name": "Josette",
+      "rarity": "rare",
+      "category": "cafe",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Fleuriste et café au décor floral."
+    },
+    {
+      "id": "spot_141",
+      "name": "La Griffe d'Arras",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Glaces artisanales place des Héros."
+    },
+    {
+      "id": "spot_142",
+      "name": "Le Vent des Thés",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Boutique et salon de thé."
+    },
+    {
+      "id": "spot_143",
+      "name": "Van Den Casteele",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Glacier et pâtissier (agglo, Dainville)."
+    },
+    {
+      "id": "spot_144",
+      "name": "Duployez Christian",
+      "rarity": "epique",
+      "category": "commerce",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Pâtisserie et salon de thé réputés."
+    },
+    {
+      "id": "spot_145",
+      "name": "Aux Merveilleux de Fred",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Célèbres merveilleux rue Gambetta."
+    },
+    {
+      "id": "spot_146",
+      "name": "Sophie Lebreuilly",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boulangerie-pâtisserie avenue Paul Michonneau."
+    },
+    {
+      "id": "spot_147",
+      "name": "Les Saveurs du Pain",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boulangerie artisanale place Courbet."
+    },
+    {
+      "id": "spot_148",
+      "name": "Boulangerie Madeleine",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boulangerie familiale rue du Temple."
+    },
+    {
+      "id": "spot_149",
+      "name": "Crousti Pain",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boulangerie rue Alphonse Daudet."
+    },
+    {
+      "id": "spot_150",
+      "name": "Boulangerie Ange",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boulangerie avenue Winston Churchill."
+    },
+    {
+      "id": "spot_151",
+      "name": "Les Friteries du Beffroi",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Friterie emblématique boulevard Carnot."
+    },
+    {
+      "id": "spot_152",
+      "name": "Burger Braisé",
+      "rarity": "rare",
+      "category": "restaurant",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Burgers artisanaux rue Saint-Aubert."
+    },
+    {
+      "id": "spot_153",
+      "name": "Fmac Chicken",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Poulet braisé et burgers rue des Balances."
+    },
+    {
+      "id": "spot_154",
+      "name": "Chicken Street",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Poulet frit et naan boulevard de Strasbourg."
+    },
+    {
+      "id": "spot_155",
+      "name": "Chamas Burger",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Burgers rue de la Housse."
+    },
+    {
+      "id": "spot_156",
+      "name": "Adana Grill",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Kebab et grillades place du Maréchal Foch."
+    },
+    {
+      "id": "spot_157",
+      "name": "French Barclette",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Fast-food rue Ernestale."
+    },
+    {
+      "id": "spot_158",
+      "name": "Quick",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Fast-food rond-point Georges Pompidou."
+    },
+    {
+      "id": "spot_159",
+      "name": "Pizzassino",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Distributeur de pizzas 24/7 avenue F. Lobbedez."
+    },
+    {
+      "id": "spot_160",
+      "name": "Friterie Joe",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Friterie boulevard Carnot."
+    },
+    {
+      "id": "spot_161",
+      "name": "Friterie Trucker's",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Friterie avenue Winston Churchill."
+    },
+    {
+      "id": "spot_162",
+      "name": "Friterie Le Lion d'Or",
+      "rarity": "peu_commun",
+      "category": "restaurant",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Friterie (agglo, Anzin-Saint-Aubin)."
+    },
+    {
+      "id": "spot_163",
+      "name": "Hôtel Mercure Centre Gare",
+      "rarity": "epique",
+      "category": "hotel",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Grand hôtel proche de la gare."
+    },
+    {
+      "id": "spot_164",
+      "name": "L'Univers Arras",
+      "rarity": "epique",
+      "category": "hotel",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Hôtel de caractère, ancien couvent."
+    },
+    {
+      "id": "spot_165",
+      "name": "ibis Styles Centre",
+      "rarity": "rare",
+      "category": "hotel",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Hôtel thème cinéma avenue Paul Michonneau."
+    },
+    {
+      "id": "spot_166",
+      "name": "Holiday Inn Express",
+      "rarity": "rare",
+      "category": "hotel",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Hôtel central rue du Docteur Brassart."
+    },
+    {
+      "id": "spot_167",
+      "name": "Entre Cour et Jardin",
+      "rarity": "rare",
+      "category": "hotel",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Maison d'hôtes de charme rue des Fours."
+    },
+    {
+      "id": "spot_168",
+      "name": "La Cour des Grands",
+      "rarity": "peu_commun",
+      "category": "hotel",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Petit hôtel place des Héros."
+    },
+    {
+      "id": "spot_169",
+      "name": "B&B Hotel Arras",
+      "rarity": "peu_commun",
+      "category": "hotel",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Hôtel économique en périphérie."
+    },
+    {
+      "id": "spot_170",
+      "name": "BowlingWorld Arras",
+      "rarity": "epique",
+      "category": "loisirs",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Bowling, arcade et bar boulevard R. Schuman."
+    },
+    {
+      "id": "spot_171",
+      "name": "Le Chemin de Traverse (Barbot)",
+      "rarity": "epique",
+      "category": "loisirs",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Escape game immersif rue du Général Barbot."
+    },
+    {
+      "id": "spot_172",
+      "name": "Le Chemin de Traverse (Salengro)",
+      "rarity": "rare",
+      "category": "loisirs",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Second site d'escape game rue Salengro."
+    },
+    {
+      "id": "spot_173",
+      "name": "La Cave (sport)",
+      "rarity": "rare",
+      "category": "sport",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Salle de sport dans des caves de 1648."
+    },
+    {
+      "id": "spot_174",
+      "name": "Basic-Fit Arras",
+      "rarity": "peu_commun",
+      "category": "sport",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Salle de sport 24/7 rue Ampère."
+    },
+    {
+      "id": "spot_175",
+      "name": "On Air",
+      "rarity": "peu_commun",
+      "category": "sport",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Salle de sport avenue Winston Churchill."
+    },
+    {
+      "id": "spot_176",
+      "name": "Fitness Park Arras",
+      "rarity": "peu_commun",
+      "category": "sport",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Salle de sport rue Copernic."
+    },
+    {
+      "id": "spot_177",
+      "name": "Fitness Forme",
+      "rarity": "peu_commun",
+      "category": "sport",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Salle conviviale rue des Augustines."
+    },
+    {
+      "id": "spot_178",
+      "name": "Curves Arras",
+      "rarity": "peu_commun",
+      "category": "sport",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Salle de sport pour femmes rue Copernic."
+    },
+    {
+      "id": "spot_179",
+      "name": "Légendarium",
+      "rarity": "epique",
+      "category": "commerce",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Librairie de l'imaginaire rue Émile Legrelle."
+    },
+    {
+      "id": "spot_180",
+      "name": "La Grand Librairie",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Grande librairie rue Gambetta."
+    },
+    {
+      "id": "spot_181",
+      "name": "Cap Nord",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Librairie de bande dessinée rue des Balances."
+    },
+    {
+      "id": "spot_182",
+      "name": "Matsuri Go",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Librairie manga rue Émile Legrelle."
+    },
+    {
+      "id": "spot_183",
+      "name": "L'Arrageoise",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Prêt-à-porter féminin rue Ernestale."
+    },
+    {
+      "id": "spot_184",
+      "name": "K-Way Arras",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boutique K-Way rue Ernestale."
+    },
+    {
+      "id": "spot_185",
+      "name": "Toi & Moi",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Prêt-à-porter féminin rue Ernestale."
+    },
+    {
+      "id": "spot_186",
+      "name": "Les Ginettes",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boutique féminine rue Désiré Delansorne."
+    },
+    {
+      "id": "spot_187",
+      "name": "Esmée",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Boutique féminine rue Désiré Delansorne."
+    },
+    {
+      "id": "spot_188",
+      "name": "Addict Collection",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Prêt-à-porter féminin rue Désiré Delansorne."
+    },
+    {
+      "id": "spot_189",
+      "name": "Monkey Barber",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Barbier au décor vintage rue Paul Doumer."
+    },
+    {
+      "id": "spot_190",
+      "name": "Alexis Barber",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Barbier rue Saint-Aubert."
+    },
+    {
+      "id": "spot_191",
+      "name": "Barber Cut",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Coiffeur-barbier rue Gambetta."
+    },
+    {
+      "id": "spot_192",
+      "name": "Naai Ki Dukan",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Barbier rue Saint-Aubert."
+    },
+    {
+      "id": "spot_193",
+      "name": "Arnaud Lechantre",
+      "rarity": "epique",
+      "category": "commerce",
+      "valueSpotz": 200,
+      "recycleSpotz": 80,
+      "marketable": true,
+      "description": "Fleuriste Meilleur Ouvrier de France."
+    },
+    {
+      "id": "spot_194",
+      "name": "Les Feuilles Sauvages",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Fleuriste créatif place du Théâtre."
+    },
+    {
+      "id": "spot_195",
+      "name": "Le Floral Arrageois",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Marché aux fleurs boulevard Carnot."
+    },
+    {
+      "id": "spot_196",
+      "name": "Coccinelle Express",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Supérette de proximité rue Saint-Aubert."
+    },
+    {
+      "id": "spot_197",
+      "name": "E.Leclerc Arras",
+      "rarity": "rare",
+      "category": "commerce",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Grand hypermarché avenue F. Lobbedez."
+    },
+    {
+      "id": "spot_198",
+      "name": "E.Leclerc Dainville",
+      "rarity": "peu_commun",
+      "category": "commerce",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Hypermarché (agglo, Dainville)."
+    },
+    {
+      "id": "spot_199",
+      "name": "Jardin du Gouverneur",
+      "rarity": "rare",
+      "category": "nature",
+      "valueSpotz": 75,
+      "recycleSpotz": 30,
+      "marketable": true,
+      "description": "Jardin public près de la Citadelle."
+    },
+    {
+      "id": "spot_200",
+      "name": "Parc des Allées / La Vigne",
+      "rarity": "peu_commun",
+      "category": "nature",
+      "valueSpotz": 25,
+      "recycleSpotz": 10,
+      "marketable": true,
+      "description": "Parc arboré près de la Citadelle."
+    }
+  ]
+}
